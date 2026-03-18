@@ -4,11 +4,11 @@ include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $username_or_email = $_POST['username'];
-    $password = $_POST['password'];
+    $username_or_email = $_POST['username_adeg'];
+    $password = $_POST['password_adeg'];
 
     // Query segura
-    $sql = "SELECT id, username, password FROM usuarios WHERE username = ? OR email = ?";
+    $sql = "SELECT id, username_adeg, password_adeg FROM usuarios WHERE username_adeg = ? OR email_adeg = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $username_or_email, $username_or_email);
     $stmt->execute();
@@ -19,11 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
 
         // Verifica a senha criptografada
-        if (password_verify($password, $user['password'])) {
+        if (password_verify($password, $user['password_adeg'])) {
 
             // Cria sessão
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['username_adeg'] = $user['username_adeg'];
 
             // Redireciona (SEM echo antes!)
             header("Location: dashboard.php");
