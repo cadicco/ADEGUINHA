@@ -1,0 +1,19 @@
+# Ignorar arquivos e pastas de dependências de pacotes (se usássemos Composer, por exemplo)
+# vendor/
+
+# Ignorar arquivos de ambiente local (se tivéssemos um arquivo .env)
+# .env
+
+# Ignorar arquivos de cache do VS Code
+.vscode/
+
+# Ignorar arquivos de logs
+*.log
+
+# Ignorar arquivos temporários
+*.tmp
+
+# Ignorar arquivos específicos do sistema operacional (opcional)
+# macOS
+.DS_Store
+Thumbs.db
